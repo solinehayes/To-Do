@@ -18,12 +18,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "bundleIdentifier": "com.yourcompany.yourappname",
+      "bundleIdentifier": "com.todo.soline",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.yourcompany.yourappname",
+      "package": "com.todo.soline",
       "versionCode": 1
     }
   }
