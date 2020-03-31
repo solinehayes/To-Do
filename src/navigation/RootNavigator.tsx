@@ -3,6 +3,8 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { ChooseYourList } from "../pages/ChooseYourList/ChooseYourList";
 import { StackNavigationOptions } from "react-navigation-stack/lib/typescript/src/vendor/types";
+import { AuthenticatedNavigator } from "./AuthenticatedNavigator";
+import { Login } from "../pages/Login/Login";
 const defaultHeaderNavigationOptions: StackNavigationOptions = {
   headerStyle: {
     borderBottomWidth: 0,
@@ -18,15 +20,21 @@ const defaultHeaderNavigationOptions: StackNavigationOptions = {
 export const RootNavigator = createAppContainer(
   createStackNavigator(
     {
-      ChooseYourList: {
-        screen: ChooseYourList,
+      AuthenticatedNavigator: {
+        screen: AuthenticatedNavigator,
         navigationOptions: {
-          title: "Your lists",
+          headerShown: false,
+        },
+      },
+      Login: {
+        screen: Login,
+        navigationOptions: {
+          title: "Login",
         },
       },
     },
     {
-      initialRouteName: "ChooseYourList",
+      initialRouteName: "AuthenticatedNavigator",
       defaultNavigationOptions: defaultHeaderNavigationOptions,
     },
   ),

@@ -1,5 +1,5 @@
 import React from "react";
-import { RootNavigator } from "./navigation/Navigator";
+import { RootNavigator } from "./navigation/RootNavigator";
 
 import * as firebase from "firebase";
 
