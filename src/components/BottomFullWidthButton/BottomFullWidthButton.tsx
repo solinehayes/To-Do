@@ -1,21 +1,16 @@
 import React from "react";
 import {
-  StyleProp,
   StyleSheet,
   ViewStyle,
   Text,
   TextStyle,
   TouchableOpacity,
-  ShadowPropTypesIOS,
 } from "react-native";
 import { theme } from "../../theme";
-import Icon from "react-native-vector-icons/FontAwesome";
 
 interface Props {
-  text?: string;
-  icon?: string;
+  text: string;
   onPress: () => void;
-  style?: StyleProp<ViewStyle>;
 }
 
 interface Styles {
@@ -25,26 +20,25 @@ interface Styles {
 
 const styles = StyleSheet.create<Styles>({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
+    position: "absolute",
+    bottom: theme.gridUnit,
+    left: theme.gridUnit,
     backgroundColor: theme.colors.sunsetOrange,
-    height: 6 * theme.gridUnit,
-    width: 6 * theme.gridUnit,
     borderRadius: 5 * theme.gridUnit,
+    justifyContent: "center",
+    height: 50,
+    width: "95%",
+    marginHorizontal: 2 * theme.gridUnit,
   },
   text: {
+    textAlign: "center",
     color: theme.colors.white,
     ...theme.fonts.arialBold14,
   },
 });
 
-export const RoundButton = (props: Props) => (
-  <TouchableOpacity
-    style={[styles.container, props.style]}
-    onPress={props.onPress}
-  >
+export const BottomFullWidthButton = (props: Props) => (
+  <TouchableOpacity style={[styles.container]} onPress={props.onPress}>
     {props.text && <Text style={styles.text}>{props.text}</Text>}
-    {props.icon && <Icon name={props.icon} color={theme.colors.white} />}
   </TouchableOpacity>
 );

@@ -46,7 +46,7 @@ const styles = StyleSheet.create<Styles>({
     marginBottom: theme.gridUnit,
   },
   textInput: {
-    borderBottomColor: theme.colors.narvik,
+    borderBottomColor: theme.colors.silver,
     borderBottomWidth: 1,
     margin: 2 * theme.gridUnit,
   },
