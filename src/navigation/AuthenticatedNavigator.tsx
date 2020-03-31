@@ -33,7 +33,7 @@ export const AuthenticatedNavigator = createAppContainer(
       },
     },
     {
-      initialRouteName: "Tasks",
+      initialRouteName: "ChooseYourList",
       defaultNavigationOptions: defaultHeaderNavigationOptions,
     },
   ),

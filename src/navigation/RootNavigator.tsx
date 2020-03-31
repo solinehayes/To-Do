@@ -34,7 +34,7 @@ export const RootNavigator = createAppContainer(
       },
     },
     {
-      initialRouteName: "AuthenticatedNavigator",
+      initialRouteName: "Login",
       defaultNavigationOptions: defaultHeaderNavigationOptions,
     },
   ),

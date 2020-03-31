@@ -28,7 +28,7 @@ const styles = StyleSheet.create<Styles>({
     margin: theme.gridUnit,
   },
 });
-export const ChooseYourList: FunctionComponent = () => {
+export const ChooseYourList: FunctionComponent = ({ navigation }) => {
   const [isModalVisible, setModalIsVisible] = useState<boolean>(false);
   const toggleModalVisibility = () => {
     setModalIsVisible(!isModalVisible);
@@ -39,7 +39,7 @@ export const ChooseYourList: FunctionComponent = () => {
         <ListCard
           name={"List A"}
           color={theme.colors.caribbeanGreen}
-          onPress={() => {}}
+          onPress={() => navigation.navigate("Tasks")}
           style={styles.listCard}
         />
       </View>
