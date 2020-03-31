@@ -7,8 +7,13 @@ const colors = {
   pinkFlamingo: "#FF65DD",
   black: "#000000",
   white: "#FFFFFF",
-  narvik: "#EBF8F4",
+  silver: "#BFBFBF",
   transparent: "transparent",
+  yellow: "#f0ff00",
+  supernova: "#ffce00",
+  orangePeel: "#ff9a00",
+  internationalOrange: "#ff5a00",
+  red: "#ff0000",
 };
 
 const gridUnit = 8;
