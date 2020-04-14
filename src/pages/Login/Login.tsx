@@ -68,7 +68,7 @@ export const Login: FunctionComponent = () => {
             <TextInput
               placeholder={"Enter your email"}
               value={email}
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={setEmail}
             />
           </View>
           <View style={styles.textInput}>
@@ -77,7 +77,7 @@ export const Login: FunctionComponent = () => {
               textContentType="password"
               placeholder={"Enter your password"}
               value={password}
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={setPassword}
             />
           </View>
           <BottomFullWidthButton text="Login" onPress={login} />
@@ -89,7 +89,7 @@ export const Login: FunctionComponent = () => {
             <TextInput
               placeholder={"Enter your username"}
               value={username}
-              onChangeText={(text) => setUsername(text)}
+              onChangeText={setUsername}
             />
           </View>
           <View style={styles.textInput}>
@@ -97,7 +97,7 @@ export const Login: FunctionComponent = () => {
             <TextInput
               placeholder={"Enter your email"}
               value={email}
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={setEmail}
             />
           </View>
           <View style={styles.textInput}>
@@ -106,7 +106,7 @@ export const Login: FunctionComponent = () => {
               textContentType="password"
               placeholder={"Enter your password"}
               value={password}
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={setPassword}
             />
           </View>
           <BottomFullWidthButton text="Sign up" onPress={signup} />
