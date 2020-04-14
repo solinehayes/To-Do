@@ -11,6 +11,7 @@ import {
   Picker,
 } from "react-native";
 import { Button } from "../Button/Button";
+import { useSafeArea } from "react-native-safe-area-context";
 
 interface Styles {
   modal: ViewStyle;
@@ -32,7 +33,7 @@ const styles = StyleSheet.create<Styles>({
   modal: {
     flex: 1,
     ...theme.shadow,
-    margin: 2 * theme.gridUnit,
+    marginHorizontal: 2 * theme.gridUnit,
     backgroundColor: theme.colors.white,
     borderRadius: theme.gridUnit,
   },
@@ -66,6 +67,7 @@ export const CreateList: FunctionComponent<Props> = ({
   onValidate,
 }: Props) => {
   const [color, setColor] = useState<string>(theme.colors.caribbeanGreen);
+  const inset = useSafeArea();
   return (
     <Modal
       animationType="slide"
@@ -73,7 +75,15 @@ export const CreateList: FunctionComponent<Props> = ({
       visible={isVisible}
       onRequestClose={() => {}}
     >
-      <View style={styles.modal}>
+      <View
+        style={[
+          styles.modal,
+          {
+            marginTop: theme.gridUnit + inset.top,
+            marginBottom: theme.gridUnit + inset.bottom,
+          },
+        ]}
+      >
         <Text style={styles.headerText}>New list</Text>
         <View style={styles.form}>
           <View style={styles.textInput}>

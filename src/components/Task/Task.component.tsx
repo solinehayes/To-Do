@@ -29,6 +29,8 @@ interface Props {
   date?: Date | undefined;
   isDone?: boolean;
   importance?: number | undefined;
+  setText: (text: string) => void;
+  setImportance: (importance: number) => void;
 }
 
 const styles = StyleSheet.create<Styles>({
@@ -55,9 +57,11 @@ const styles = StyleSheet.create<Styles>({
 
 export const Task: FunctionComponent<Props> = ({
   text,
+  setText,
   date = undefined,
   isDone = false,
   importance,
+  setImportance,
 }: Props) => {
   const {
     setColor,
@@ -87,6 +91,9 @@ export const Task: FunctionComponent<Props> = ({
         onClose={toggleModalVisibility}
         isVisible={isModalVisible}
         onValidate={toggleModalVisibility}
+        importance={importance}
+        taskName={text}
+        setTaskName={setText}
       />
     </>
   );

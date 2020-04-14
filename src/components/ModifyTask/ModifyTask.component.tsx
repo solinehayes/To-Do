@@ -12,6 +12,7 @@ import {
   Slider,
 } from "react-native";
 import { Button } from "../Button/Button";
+import { useSafeArea } from "react-native-safe-area-context";
 
 interface Styles {
   modal: ViewStyle;
@@ -29,13 +30,15 @@ interface Props {
   setIsVisible?: (boolean) => void;
   onValidate: () => void;
   taskName?: string;
+  setTaskName: (text: string) => void;
+  importance: number;
 }
 
 const styles = StyleSheet.create<Styles>({
   modal: {
     flex: 1,
     ...theme.shadow,
-    margin: 2 * theme.gridUnit,
+    marginHorizontal: 2 * theme.gridUnit,
     backgroundColor: theme.colors.white,
     borderRadius: theme.gridUnit,
   },
@@ -71,7 +74,10 @@ export const ModifyTask: FunctionComponent<Props> = ({
   isVisible,
   onValidate,
   taskName = "",
+  setTaskName,
+  importance = 5,
 }: Props) => {
+  const inset = useSafeArea();
   return (
     <Modal
       animationType="slide"
@@ -79,17 +85,30 @@ export const ModifyTask: FunctionComponent<Props> = ({
       visible={isVisible}
       onRequestClose={() => {}}
     >
-      <View style={styles.modal}>
+      <View
+        style={[
+          styles.modal,
+          {
+            marginTop: theme.gridUnit + inset.top,
+            marginBottom: theme.gridUnit + inset.bottom,
+          },
+        ]}
+      >
         <Text style={styles.headerText}>Edit task</Text>
         <View style={styles.form}>
           <View style={styles.textInput}>
             <Text style={styles.labelText}>Task</Text>
-            <TextInput placeholder={"Task name"} value={taskName} />
+            <TextInput
+              placeholder={"Task name"}
+              value={taskName}
+              onChangeText={(data: string) => setTaskName(data)}
+            />
           </View>
           <View style={styles.sliderInput}>
             <Text style={styles.labelText}>Importance</Text>
             <Slider
               step={0.1}
+              value={importance}
               minimumTrackTintColor={theme.colors.sunsetOrange}
             />
           </View>

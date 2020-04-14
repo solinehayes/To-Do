@@ -2,7 +2,7 @@ import { theme } from "../../theme";
 import { useState } from "react";
 
 export const useTask = () => {
-  const setColor = importance => {
+  const setColor = (importance) => {
     if (importance) {
       if (importance < 0.2) {
         return theme.colors.yellow;
@@ -23,5 +23,11 @@ export const useTask = () => {
   const toggleModalVisibility = () => {
     setModalIsVisible(!isModalVisible);
   };
-  return { setColor, isModalVisible, setModalIsVisible, toggleModalVisibility };
+
+  return {
+    setColor,
+    isModalVisible,
+    setModalIsVisible,
+    toggleModalVisibility,
+  };
 };

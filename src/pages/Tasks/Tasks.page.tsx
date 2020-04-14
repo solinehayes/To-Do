@@ -35,13 +35,20 @@ const styles = StyleSheet.create<Styles>({
 });
 export const Tasks: FunctionComponent = () => {
   const [isModalVisible, setModalIsVisible] = useState<boolean>(false);
+  const [taskName, setTaskName] = useState<string>("testtest");
+  const [importance, setImportance] = useState<number>(0.5);
   const toggleModalVisibility = () => {
     setModalIsVisible(!isModalVisible);
   };
   return (
     <>
       <ScrollView contentContainerStyle={styles.topContainer}>
-        <Task text="TaskTest" importance={0.4} />
+        <Task
+          text={taskName}
+          setText={setTaskName}
+          setImportance={setImportance}
+          importance={importance}
+        />
       </ScrollView>
       <View style={styles.buttonContainer}>
         <RoundButton icon="bars" onPress={() => {}} style={styles.plusButton} />
