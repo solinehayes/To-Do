@@ -58,7 +58,6 @@ export const LoginToggleButton: FunctionComponent<Props> = ({
   setIsSelected,
 }) => {
   const changingToggle = () => {
-    console.log(isSelected);
     if (isSelected === LoginState.LOGIN) {
       setIsSelected(LoginState.SIGNUP);
     } else {

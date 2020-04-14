@@ -21,8 +21,8 @@ interface Styles {
 const styles = StyleSheet.create<Styles>({
   container: {
     position: "absolute",
-    bottom: theme.gridUnit,
-    left: theme.gridUnit,
+    bottom: 2 * theme.gridUnit,
+    left: 0,
     backgroundColor: theme.colors.sunsetOrange,
     borderRadius: 5 * theme.gridUnit,
     justifyContent: "center",

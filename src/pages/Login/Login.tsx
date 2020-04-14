@@ -12,18 +12,19 @@ import { theme } from "../../theme";
 import React from "react";
 import { LoginToggleButton } from "./components/toggleLoginButton";
 import { useLogin, LoginState } from "./useLogin";
+import { SafeAreaView } from "react-navigation";
 
 interface Styles {
   container: ViewStyle;
   textInput: ViewStyle;
   labelText: TextStyle;
   headerText: TextStyle;
-  button: ViewStyle;
 }
 
 const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
+    padding: theme.gridUnit,
   },
   headerText: {
     textAlign: "center",
@@ -39,16 +40,23 @@ const styles = StyleSheet.create<Styles>({
     borderBottomWidth: 1,
     margin: 2 * theme.gridUnit,
   },
-  button: {
-    textAlign: "center",
-    margin: theme.gridUnit,
-  },
 });
 
 export const Login: FunctionComponent = () => {
-  const { isSelected, setIsSelected } = useLogin();
+  const {
+    isSelected,
+    setIsSelected,
+    username,
+    setUsername,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    signup,
+    login,
+  } = useLogin();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <LoginToggleButton
         isSelected={isSelected}
         setIsSelected={setIsSelected}
@@ -57,45 +65,53 @@ export const Login: FunctionComponent = () => {
         <>
           <View style={styles.textInput}>
             <Text style={styles.labelText}>Email Address</Text>
-            <TextInput placeholder={"Enter your email"} />
+            <TextInput
+              placeholder={"Enter your email"}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
           </View>
           <View style={styles.textInput}>
             <Text style={styles.labelText}>Password</Text>
             <TextInput
               textContentType="password"
               placeholder={"Enter your password"}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
             />
           </View>
-          <BottomFullWidthButton
-            style={styles.button}
-            text="Login"
-            onPress={() => {}}
-          />
+          <BottomFullWidthButton text="Login" onPress={login} />
         </>
       ) : (
         <>
           <View style={styles.textInput}>
             <Text style={styles.labelText}>Username</Text>
-            <TextInput placeholder={"Enter your username"} />
+            <TextInput
+              placeholder={"Enter your username"}
+              value={username}
+              onChangeText={(text) => setUsername(text)}
+            />
           </View>
           <View style={styles.textInput}>
             <Text style={styles.labelText}>Email Address</Text>
-            <TextInput placeholder={"Enter your email"} />
+            <TextInput
+              placeholder={"Enter your email"}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
           </View>
           <View style={styles.textInput}>
             <Text style={styles.labelText}>Password</Text>
             <TextInput
               textContentType="password"
               placeholder={"Enter your password"}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
             />
           </View>
-          <BottomFullWidthButton
-            style={styles.button}
-            text="Sign up"
-            onPress={() => {}}
-          />
+          <BottomFullWidthButton text="Sign up" onPress={signup} />
         </>
       )}
-    </View>
+    </SafeAreaView>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import firebase from "react-native-firebase";
 
 export enum LoginState {
   LOGIN = "LOGIN",
@@ -7,5 +8,20 @@ export enum LoginState {
 
 export const useLogin = () => {
   const [isSelected, setIsSelected] = useState<LoginState>(LoginState.LOGIN);
-  return { isSelected, setIsSelected };
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+
+  const login = () => {};
+  const signup = () => {};
+  return {
+    isSelected,
+    setIsSelected,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    username,
+    setUsername,
+  };
 };
