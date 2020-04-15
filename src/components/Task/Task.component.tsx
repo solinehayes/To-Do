@@ -79,7 +79,11 @@ export const Task: FunctionComponent<Props> = ({
       >
         <View style={styles.container}>
           <View style={styles.checkBoxAndText}>
-            <CheckBox isChecked={isDone} style={styles.checkBox} />
+            <CheckBox
+              onClick={() => {}}
+              isChecked={isDone}
+              style={styles.checkBox}
+            />
             <TextInput value={text} style={styles.text} />
             {date == undefined ? <Text>{date}</Text> : null}
           </View>
