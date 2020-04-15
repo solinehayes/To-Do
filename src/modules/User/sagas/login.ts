@@ -7,6 +7,7 @@ import {
   LoadingStatusKey,
   finishLoading,
 } from "../../LoadingStatus/actions";
+import { NavigationService } from "../../../navigation/navigation.service";
 
 export function* loginSaga(
   action: ReturnType<typeof loginActionCreator>,
@@ -19,7 +20,7 @@ export function* loginSaga(
       email,
       password,
     );
-    console.log("login");
+    yield call([NavigationService, "navigate"], "AuthenticatedNavigator", {});
   } catch (error) {
     console.warn(error);
   } finally {

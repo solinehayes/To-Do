@@ -7,7 +7,22 @@ import * as firebase from "firebase";
 import { rootReducer } from "./modules/reducer";
 import { middlewares, sagaMiddleware } from "./modules/middleware";
 import { rootSaga } from "./modules/sagas";
+import { NavigationService } from "./navigation/navigation.service";
+import {
+  NavigationScreenProp,
+  NavigationRoute,
+  NavigationParams,
+} from "react-navigation";
 
+const setNavigatorRef = (ref: unknown) => {
+  if (!ref) return;
+  NavigationService.setNavigator(
+    ref as NavigationScreenProp<
+      NavigationRoute<NavigationParams>,
+      NavigationParams
+    >,
+  );
+};
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAvHczJ7pVkKnG3UsuXix13YkNFPud60fY",
@@ -26,7 +41,7 @@ firebase.initializeApp(firebaseConfig);
 export default function App() {
   return (
     <Provider store={store}>
-      <RootNavigator />
+      <RootNavigator ref={setNavigatorRef} />
     </Provider>
   );
 }
