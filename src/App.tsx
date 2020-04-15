@@ -10,6 +10,7 @@ import { rootSaga } from "./modules/sagas";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { navigationRef } from "./navigation/navigation.service";
+import { ErrorModal } from "./components/ErrorModal/ErrorModal.component";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -31,6 +32,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer ref={navigationRef}>
         <RootNavigator />
+        <ErrorModal />
       </NavigationContainer>
     </Provider>
   );
