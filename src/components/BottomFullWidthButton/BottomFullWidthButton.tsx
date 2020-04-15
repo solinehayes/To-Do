@@ -5,12 +5,14 @@ import {
   Text,
   TextStyle,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { theme } from "../../theme";
 
 interface Props {
   text: string;
   onPress: () => void;
+  isLoading?: boolean;
 }
 
 interface Styles {
@@ -39,6 +41,10 @@ const styles = StyleSheet.create<Styles>({
 
 export const BottomFullWidthButton = (props: Props) => (
   <TouchableOpacity style={[styles.container]} onPress={props.onPress}>
-    {props.text && <Text style={styles.text}>{props.text}</Text>}
+    {props.isLoading ? (
+      <ActivityIndicator testID="demoLoader" color={theme.colors.white} />
+    ) : (
+      props.text && <Text style={styles.text}>{props.text}</Text>
+    )}
   </TouchableOpacity>
 );

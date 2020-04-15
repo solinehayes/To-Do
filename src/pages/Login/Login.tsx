@@ -54,6 +54,8 @@ export const Login: FunctionComponent = () => {
     setPassword,
     signup,
     login,
+    isLoginLoading,
+    isSignUpLoading,
   } = useLogin();
   return (
     <SafeAreaView style={styles.container}>
@@ -80,7 +82,11 @@ export const Login: FunctionComponent = () => {
               onChangeText={setPassword}
             />
           </View>
-          <BottomFullWidthButton text="Login" onPress={login} />
+          <BottomFullWidthButton
+            text="Login"
+            onPress={() => login(email, password)}
+            isLoading={isLoginLoading}
+          />
         </>
       ) : (
         <>
@@ -109,7 +115,11 @@ export const Login: FunctionComponent = () => {
               onChangeText={setPassword}
             />
           </View>
-          <BottomFullWidthButton text="Sign up" onPress={signup} />
+          <BottomFullWidthButton
+            text="Sign up"
+            onPress={() => signup(email, password, username)}
+            isLoading={isSignUpLoading}
+          />
         </>
       )}
     </SafeAreaView>
