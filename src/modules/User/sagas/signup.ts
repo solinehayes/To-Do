@@ -7,20 +7,20 @@ import { signUpActionCreator } from "../actions/signup";
 import { call, put } from "redux-saga/effects";
 import firebase from "firebase";
 import { SagaIterator } from "redux-saga";
+import { NavigationService } from "../../../navigation/navigation.service";
 
 export function* signupSaga(
   action: ReturnType<typeof signUpActionCreator>,
 ): SagaIterator {
-  console.log("saga launched");
   yield put(startLoading(LoadingStatusKey.SIGN_UP));
   const { email, password, username } = action.payload;
-  console.log("test saga");
   try {
     yield call(
       [firebase.auth(), "createUserWithEmailAndPassword"],
       email,
       password,
     );
+    yield call([NavigationService, "navigate"], "AuthenticatedNavigator", {});
   } catch (error) {
     console.warn(error);
   } finally {

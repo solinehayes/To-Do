@@ -27,12 +27,7 @@ export const useLogin = () => {
   };
 
   const signup = async (email: string, password: string, username: string) => {
-    //dispatch(signUpActionCreator({ email, password, username }));
-    let res = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password);
-
-    console.log(res);
+    dispatch(signUpActionCreator({ email, password, username }));
   };
   return {
     isSelected,
