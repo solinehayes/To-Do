@@ -1,11 +1,8 @@
 import React from "react";
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { ChooseYourList } from "../pages/ChooseYourList/ChooseYourList";
-import { StackNavigationOptions } from "react-navigation-stack/lib/typescript/src/vendor/types";
+import { createStackNavigator } from "@react-navigation/stack";
 import { AuthenticatedNavigator } from "./AuthenticatedNavigator";
 import { Login } from "../pages/Login/Login";
-const defaultHeaderNavigationOptions: StackNavigationOptions = {
+const defaultHeaderNavigationOptions = {
   headerStyle: {
     borderBottomWidth: 0,
     shadowOpacity: 0,
@@ -17,25 +14,23 @@ const defaultHeaderNavigationOptions: StackNavigationOptions = {
     fontFamily: "Arial",
   },
 };
-export const RootNavigator = createAppContainer(
-  createStackNavigator(
-    {
-      AuthenticatedNavigator: {
-        screen: AuthenticatedNavigator,
-        navigationOptions: {
-          headerShown: false,
-        },
-      },
-      Login: {
-        screen: Login,
-        navigationOptions: {
-          title: "Login",
-        },
-      },
-    },
-    {
-      initialRouteName: "Login",
-      defaultNavigationOptions: defaultHeaderNavigationOptions,
-    },
-  ),
-);
+
+const RootStack = createStackNavigator<Record<string, undefined>>();
+export const RootNavigator = () => {
+  return (
+    <RootStack.Navigator initialRouteName={"Login"}>
+      <RootStack.Screen
+        name="AuthenticatedNavigator"
+        component={AuthenticatedNavigator}
+        options={{ headerShown: false }}
+      />
+      <RootStack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          ...defaultHeaderNavigationOptions,
+        }}
+      />
+    </RootStack.Navigator>
+  );
+};

@@ -1,10 +1,10 @@
 import React from "react";
 import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { ChooseYourList } from "../pages/ChooseYourList/ChooseYourList";
 import { Tasks } from "../pages/Tasks/Tasks.page";
-import { StackNavigationOptions } from "react-navigation-stack/lib/typescript/src/vendor/types";
-const defaultHeaderNavigationOptions: StackNavigationOptions = {
+
+const defaultHeaderNavigationOptions = {
   headerStyle: {
     borderBottomWidth: 0,
     shadowOpacity: 0,
@@ -16,25 +16,26 @@ const defaultHeaderNavigationOptions: StackNavigationOptions = {
     fontFamily: "Arial",
   },
 };
-export const AuthenticatedNavigator = createAppContainer(
-  createStackNavigator(
-    {
-      ChooseYourList: {
-        screen: ChooseYourList,
-        navigationOptions: {
-          title: "Your lists",
-        },
-      },
-      Tasks: {
-        screen: Tasks,
-        navigationOptions: {
-          title: "Your Tasks",
-        },
-      },
-    },
-    {
-      initialRouteName: "ChooseYourList",
-      defaultNavigationOptions: defaultHeaderNavigationOptions,
-    },
-  ),
-);
+const AuthenticatedStack = createStackNavigator<Record<string, undefined>>();
+export const AuthenticatedNavigator = () => {
+  return (
+    <AuthenticatedStack.Navigator initialRouteName={"ChooseYourList"}>
+      <AuthenticatedStack.Screen
+        name="ChooseYourList"
+        component={ChooseYourList}
+        options={{
+          ...defaultHeaderNavigationOptions,
+          headerTitle: "Your lists",
+        }}
+      />
+      <AuthenticatedStack.Screen
+        name="Tasks"
+        component={Tasks}
+        options={{
+          ...defaultHeaderNavigationOptions,
+          headerTitle: "Your tasks",
+        }}
+      />
+    </AuthenticatedStack.Navigator>
+  );
+};

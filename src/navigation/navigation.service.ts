@@ -1,35 +1,25 @@
 import {
-  NavigationActions,
-  NavigationParams,
-  NavigationRoute,
-  NavigationScreenProp,
-  StackActions,
-} from "react-navigation";
+  CommonActions,
+  NavigationContainerRef,
+} from "@react-navigation/native";
+import React from "react";
 
-let _navigator: NavigationScreenProp<
-  NavigationRoute<NavigationParams>,
-  NavigationParams
->;
+export const navigationRef = React.createRef<NavigationContainerRef>();
 
-const setNavigator = (
-  navigatorRef: NavigationScreenProp<
-    NavigationRoute<NavigationParams>,
-    NavigationParams
-  >,
-) => (_navigator = navigatorRef);
-
-const navigate = (routeName: string, params: Record<string, unknown> = {}) =>
-  _navigator.dispatch(NavigationActions.navigate({ routeName, params }));
-
-const goBack = () => _navigator.dispatch(NavigationActions.back());
-
-const reset = (routeName: string) => {
-  const resetAction = StackActions.reset({
-    index: 0,
-    actions: [NavigationActions.navigate({ routeName })],
-    key: null,
-  });
-  _navigator.dispatch(resetAction);
+export const NavigationService = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  navigate: (name: string, params: Record<string, any>) => {
+    navigationRef &&
+      navigationRef.current &&
+      navigationRef.current.navigate(name, params);
+  },
+  reset: (routeName: string) => {
+    const resetAction = CommonActions.reset({
+      index: 0,
+      routes: [{ name: routeName }],
+    });
+    navigationRef &&
+      navigationRef.current &&
+      navigationRef.current.dispatch(resetAction);
+  },
 };
-
-export const NavigationService = { setNavigator, navigate, goBack, reset };
