@@ -12,7 +12,6 @@ export enum LoginState {
 }
 
 export const useLogin = () => {
-  console.log(store.getState());
   const [isSelected, setIsSelected] = useState<LoginState>(LoginState.LOGIN);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
