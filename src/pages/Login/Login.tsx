@@ -87,6 +87,7 @@ export const Login: FunctionComponent = () => {
             text="Login"
             onPress={() => login(email, password)}
             isLoading={isLoginLoading}
+            isDisabled={!password || !email}
           />
         </>
       ) : (
@@ -121,6 +122,7 @@ export const Login: FunctionComponent = () => {
             text="Sign up"
             onPress={() => signup(email, password, username)}
             isLoading={isSignUpLoading}
+            isDisabled={!password || !email || !username}
           />
         </>
       )}
