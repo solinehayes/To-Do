@@ -8,6 +8,7 @@ import { call, put } from "redux-saga/effects";
 import firebase from "firebase";
 import { SagaIterator } from "redux-saga";
 import { NavigationService } from "../../../navigation/navigation.service";
+import { ErrorService } from "../../../Lib/ErrorService";
 
 export function* signupSaga(
   action: ReturnType<typeof signUpActionCreator>,
@@ -22,7 +23,7 @@ export function* signupSaga(
     );
     yield call([NavigationService, "navigate"], "AuthenticatedNavigator", {});
   } catch (error) {
-    console.warn(error);
+    yield call([ErrorService, "showErrorModal"]);
   } finally {
     yield put(finishLoading(LoadingStatusKey.SIGN_UP));
   }

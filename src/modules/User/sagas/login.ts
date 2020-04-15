@@ -8,6 +8,7 @@ import {
   finishLoading,
 } from "../../LoadingStatus/actions";
 import { NavigationService } from "../../../navigation/navigation.service";
+import { ErrorService } from "../../../Lib/ErrorService";
 
 export function* loginSaga(
   action: ReturnType<typeof loginActionCreator>,
@@ -22,7 +23,7 @@ export function* loginSaga(
     );
     yield call([NavigationService, "navigate"], "AuthenticatedNavigator", {});
   } catch (error) {
-    console.warn(error);
+    yield call([ErrorService, "showErrorModal"]);
   } finally {
     yield put(finishLoading(LoadingStatusKey.LOGIN));
   }
