@@ -80,6 +80,7 @@ export const Login: FunctionComponent = () => {
               placeholder={"Enter your password"}
               value={password}
               onChangeText={setPassword}
+              secureTextEntry
             />
           </View>
           <BottomFullWidthButton
@@ -113,6 +114,7 @@ export const Login: FunctionComponent = () => {
               placeholder={"Enter your password"}
               value={password}
               onChangeText={setPassword}
+              secureTextEntry
             />
           </View>
           <BottomFullWidthButton
