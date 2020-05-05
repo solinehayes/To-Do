@@ -9,6 +9,7 @@ import firebase from "firebase";
 import { SagaIterator } from "redux-saga";
 import { NavigationService } from "../../../navigation/navigation.service";
 import { ErrorService } from "../../../Lib/ErrorService";
+import { updateUserActionCreator } from "../actions/update";
 
 export function* signupSaga(
   action: ReturnType<typeof signUpActionCreator>,
@@ -16,11 +17,12 @@ export function* signupSaga(
   yield put(startLoading(LoadingStatusKey.SIGN_UP));
   const { email, password, username } = action.payload;
   try {
-    yield call(
+    const userData = yield call(
       [firebase.auth(), "createUserWithEmailAndPassword"],
       email,
       password,
     );
+    yield put(updateUserActionCreator({ id: userData.user.uid }));
     yield call([NavigationService, "navigate"], "AuthenticatedNavigator", {});
   } catch (error) {
     yield call([ErrorService, "showErrorModal"]);

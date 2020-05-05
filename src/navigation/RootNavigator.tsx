@@ -1,8 +1,10 @@
-import React from "react";
+import React  from "react";
+import { useSelector } from 'react-redux';
 import { createStackNavigator } from "@react-navigation/stack";
-import firebase from "firebase";
 import { AuthenticatedNavigator } from "./AuthenticatedNavigator";
 import { Login } from "../pages/Login/Login";
+import { userIdSelector, userSelector } from "../modules/User/selector/selector";
+
 const defaultHeaderNavigationOptions = {
   headerStyle: {
     borderBottomWidth: 0,
@@ -18,11 +20,10 @@ const defaultHeaderNavigationOptions = {
 
 const RootStack = createStackNavigator<Record<string, undefined>>();
 export const RootNavigator = () => {
-  const { currentUser } = firebase.auth();
-  console.log(currentUser)
+  const isLoggedIn = !!useSelector(userIdSelector);
   return (
-    <RootStack.Navigator initialRouteName={currentUser? "AuthenticatedNavigator":"Login"}>
-      {currentUser?
+    <RootStack.Navigator initialRouteName={isLoggedIn? "AuthenticatedNavigator":"Login"}>
+      {isLoggedIn?
       <RootStack.Screen
         name="AuthenticatedNavigator"
         component={AuthenticatedNavigator}
