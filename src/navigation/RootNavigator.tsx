@@ -1,5 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import firebase from "firebase";
 import { AuthenticatedNavigator } from "./AuthenticatedNavigator";
 import { Login } from "../pages/Login/Login";
 const defaultHeaderNavigationOptions = {
@@ -17,20 +18,23 @@ const defaultHeaderNavigationOptions = {
 
 const RootStack = createStackNavigator<Record<string, undefined>>();
 export const RootNavigator = () => {
+  const { currentUser } = firebase.auth();
+  console.log(currentUser)
   return (
-    <RootStack.Navigator initialRouteName={"Login"}>
+    <RootStack.Navigator initialRouteName={currentUser? "AuthenticatedNavigator":"Login"}>
+      {currentUser?
       <RootStack.Screen
         name="AuthenticatedNavigator"
         component={AuthenticatedNavigator}
         options={{ headerShown: false }}
-      />
+      /> :
       <RootStack.Screen
         name="Login"
         component={Login}
         options={{
           ...defaultHeaderNavigationOptions,
         }}
-      />
+      />}
     </RootStack.Navigator>
   );
 };

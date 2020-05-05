@@ -71,6 +71,7 @@ export const Login: FunctionComponent = () => {
               placeholder={"Enter your email"}
               value={email}
               onChangeText={setEmail}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.textInput}>
@@ -81,6 +82,7 @@ export const Login: FunctionComponent = () => {
               value={password}
               onChangeText={setPassword}
               secureTextEntry
+              autoCapitalize="none"
             />
           </View>
           <BottomFullWidthButton
@@ -106,6 +108,7 @@ export const Login: FunctionComponent = () => {
               placeholder={"Enter your email"}
               value={email}
               onChangeText={setEmail}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.textInput}>
@@ -116,6 +119,7 @@ export const Login: FunctionComponent = () => {
               value={password}
               onChangeText={setPassword}
               secureTextEntry
+              autoCapitalize="none"
             />
           </View>
           <BottomFullWidthButton
