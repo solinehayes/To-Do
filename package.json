@@ -16,6 +16,7 @@
     "appcenter": "3.0.0",
     "appcenter-analytics": "3.0.0",
     "appcenter-crashes": "3.0.0",
+    "commitizen": "^4.1.2",
     "expo": "~36.0.0",
     "firebase": "^7.14.2",
     "react": "~16.9.0",
@@ -43,6 +44,7 @@
     "@types/react-navigation": "^3.4.0",
     "@types/redux-saga": "^0.10.5",
     "babel-preset-expo": "~8.0.0",
+    "cz-conventional-changelog": "3.2.0",
     "typescript": "~3.6.3"
   },
   "make-dependencies": {
@@ -58,5 +60,10 @@
       ]
     }
   },
-  "private": true
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
