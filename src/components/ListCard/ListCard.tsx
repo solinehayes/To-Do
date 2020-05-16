@@ -11,10 +11,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { theme } from "../../theme";
+import { ListColors, listColorToThemeColor } from "../createList/CreateList";
 
 interface Props {
   style?: StyleProp<ViewStyle>;
-  color: string;
+  color: ListColors;
   name: string | null;
   onPress: () => void;
 }
@@ -52,7 +53,7 @@ const styles = StyleSheet.create<Styles>({
 export const ListCard = ({ style, name, onPress, color }: Props) => {
   return (
     <TouchableOpacity
-      style={[styles.shadowContainer, style, { backgroundColor: color }]}
+      style={[styles.shadowContainer, style, { backgroundColor: listColorToThemeColor[color] }]}
       onPress={onPress}
     >
       <View style={styles.container}>

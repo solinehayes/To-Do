@@ -35,7 +35,7 @@ export enum ListColors {
   PINK = "Pink",
   ORANGE = "Orange",
 }
-const listColorToThemeColor ={
+export const listColorToThemeColor ={
   [ListColors.GREEN]: theme.colors.caribbeanGreen,
   [ListColors.YELLOW]: theme.colors.brightSun,
   [ListColors.BLUE]: theme.colors.dodgerBlue,

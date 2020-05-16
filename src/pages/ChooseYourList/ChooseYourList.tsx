@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from "react";
 import { StyleSheet, View, ViewStyle, TextStyle } from "react-native";
 import { RoundButton } from "../../components/roundButton/roundButton";
 import { theme } from "../../theme";
-import { CreateList } from "../../components/createList/CreateList";
+import { CreateList, ListColors } from "../../components/createList/CreateList";
 import { ListCard } from "../../components/ListCard/ListCard";
 
 interface Styles {
@@ -43,19 +43,19 @@ export const ChooseYourList: FunctionComponent<Props> = ({ navigation }) => {
       <View style={styles.topContainer}>
         <ListCard
           name={"List A"}
-          color={theme.colors.caribbeanGreen}
+          color={ListColors.BLUE}
           onPress={() => navigation.navigate("Tasks")}
           style={styles.listCard}
         />
         <ListCard
-          name={"List A"}
-          color={theme.colors.caribbeanGreen}
+          name={"List B"}
+          color={ListColors.ORANGE}
           onPress={() => navigation.navigate("Tasks")}
           style={styles.listCard}
         />
         <ListCard
-          name={"List A"}
-          color={theme.colors.caribbeanGreen}
+          name={"List C"}
+          color={ListColors.PINK}
           onPress={() => navigation.navigate("Tasks")}
           style={styles.listCard}
         />
