@@ -4,6 +4,12 @@ import { RoundButton } from "../../components/roundButton/roundButton";
 import { theme } from "../../theme";
 import { CreateList, ListColors } from "../../components/createList/CreateList";
 import { ListCard } from "../../components/ListCard/ListCard";
+import { useLists } from "../../db/lists/useLists";
+import { ErrorService } from "../../Lib/ErrorService/index";
+import { startLoading, LoadingStatusKey, finishLoading } from "../../modules/LoadingStatus/actions";
+import { userIdSelector } from "../../modules/User/selector/selector";
+import { useSelector } from "react-redux";
+
 
 interface Styles {
   topContainer: ViewStyle;
@@ -34,10 +40,31 @@ const styles = StyleSheet.create<Styles>({
   },
 });
 export const ChooseYourList: FunctionComponent<Props> = ({ navigation }) => {
+  const {createList} = useLists();
+  const userId = useSelector(userIdSelector);
   const [isModalVisible, setModalIsVisible] = useState<boolean>(false);
   const toggleModalVisibility = () => {
     setModalIsVisible(!isModalVisible);
   };
+  const saveNewList = async  (name:string,color: ListColors)=>{
+    let savedSuccessfully = true;
+    try{
+      startLoading(LoadingStatusKey.CREATE_LIST)
+      await createList(name,color, userId);
+    }
+    catch(error){
+      console.log(error)
+      ErrorService.showErrorModal();
+      savedSuccessfully = false;
+    }
+    finally{
+      finishLoading(LoadingStatusKey.CREATE_LIST);
+      if (savedSuccessfully) toggleModalVisibility();
+    }
+  }
+
+
+
   return (
     <>
       <View style={styles.topContainer}>
@@ -71,7 +98,7 @@ export const ChooseYourList: FunctionComponent<Props> = ({ navigation }) => {
       <CreateList
         onClose={toggleModalVisibility}
         isVisible={isModalVisible}
-        onValidate={toggleModalVisibility}
+        onValidate={saveNewList}
       />
     </>
   );
