@@ -3,6 +3,7 @@ import { action, ActionType } from "typesafe-actions";
 export enum LoadingStatusKey {
   SIGN_UP = "SIGN_UP",
   LOGIN = "LOGIN",
+  CREATE_LIST ="CREATE_LIST"
 }
 
 export const startLoading = (key: LoadingStatusKey) =>
