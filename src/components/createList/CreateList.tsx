@@ -28,6 +28,20 @@ interface Props {
   setIsVisible?: (boolean) => void;
   onValidate: () => void;
 }
+export enum ListColors {
+  GREEN = "Green",
+  YELLOW ="Yellow",
+  BLUE = 'Blue',
+  PINK = "Pink",
+  ORANGE = "Orange",
+}
+const listColorToThemeColor ={
+  [ListColors.GREEN]: theme.colors.caribbeanGreen,
+  [ListColors.YELLOW]: theme.colors.brightSun,
+  [ListColors.BLUE]: theme.colors.dodgerBlue,
+  [ListColors.PINK]: theme.colors.pinkFlamingo,
+  [ListColors.ORANGE]: theme.colors.koromiko,
+}
 
 const styles = StyleSheet.create<Styles>({
   modal: {
@@ -99,11 +113,11 @@ export const CreateList: FunctionComponent<Props> = ({
                 setColor(itemValue);
               }}
             >
-              <Picker.Item label="Green" value={theme.colors.caribbeanGreen} />
-              <Picker.Item label="Yellow" value={theme.colors.brightSun} />
-              <Picker.Item label="Blue" value={theme.colors.dodgerBlue} />
-              <Picker.Item label="Pink" value={theme.colors.pinkFlamingo} />
-              <Picker.Item label="Orange" value={theme.colors.koromiko} />
+              <Picker.Item label={ListColors.GREEN} value={listColorToThemeColor[ListColors.GREEN]} />
+              <Picker.Item label={ListColors.BLUE} value={listColorToThemeColor[ListColors.BLUE]} />
+              <Picker.Item label={ListColors.PINK} value={listColorToThemeColor[ListColors.PINK]} />
+              <Picker.Item label={ListColors.YELLOW} value={listColorToThemeColor[ListColors.YELLOW]} />
+              <Picker.Item label={ListColors.ORANGE} value={listColorToThemeColor[ListColors.ORANGE]} />
             </Picker>
           </View>
         </View>
