@@ -11,11 +11,16 @@ interface Styles {
   buttonContainer: ViewStyle;
   listCard: ViewStyle;
 }
+interface Props {
+  navigation: any;
+}
 
 const styles = StyleSheet.create<Styles>({
   topContainer: {
     flex: 1,
-    justifyContent: "space-between",
+    flexDirection: "row",
+    justifyContent: "center",
+    flexWrap: "wrap",
   },
   buttonContainer: {
     flexDirection: "row",
@@ -28,7 +33,7 @@ const styles = StyleSheet.create<Styles>({
     margin: theme.gridUnit,
   },
 });
-export const ChooseYourList: FunctionComponent = ({ navigation }) => {
+export const ChooseYourList: FunctionComponent<Props> = ({ navigation }) => {
   const [isModalVisible, setModalIsVisible] = useState<boolean>(false);
   const toggleModalVisibility = () => {
     setModalIsVisible(!isModalVisible);
@@ -36,6 +41,18 @@ export const ChooseYourList: FunctionComponent = ({ navigation }) => {
   return (
     <>
       <View style={styles.topContainer}>
+        <ListCard
+          name={"List A"}
+          color={theme.colors.caribbeanGreen}
+          onPress={() => navigation.navigate("Tasks")}
+          style={styles.listCard}
+        />
+        <ListCard
+          name={"List A"}
+          color={theme.colors.caribbeanGreen}
+          onPress={() => navigation.navigate("Tasks")}
+          style={styles.listCard}
+        />
         <ListCard
           name={"List A"}
           color={theme.colors.caribbeanGreen}

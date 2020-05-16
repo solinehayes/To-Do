@@ -30,12 +30,15 @@ const styles = StyleSheet.create<Styles>({
     borderRadius: theme.gridUnit,
     overflow: "hidden",
     alignItems: "center",
+    justifyContent:'center',
+    width: "100%",
+    height: 100,
   },
   shadowContainer: {
     ...theme.shadow,
     shadowRadius: 10,
     borderRadius: theme.gridUnit,
-    width: "50%",
+    width: "45%",
   },
   text: {
     ...theme.fonts.helveticaBold14,
