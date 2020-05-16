@@ -6,6 +6,7 @@ import {
   Text,
   TextStyle,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { theme } from "../../theme";
 
@@ -14,6 +15,7 @@ interface Props {
   icon?: string;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
+  isLoading?: boolean;
 }
 
 interface Styles {
@@ -43,6 +45,10 @@ export const Button = (props: Props) => (
     style={[styles.container, props.style]}
     onPress={props.onPress}
   >
-    {props.text && <Text style={styles.text}>{props.text}</Text>}
+    {props.isLoading ? (
+      <ActivityIndicator testID="demoLoader" color={theme.colors.white} />
+    ) : (
+      props.text && <Text style={styles.text}>{props.text}</Text>
+    )}
   </TouchableOpacity>
 );
