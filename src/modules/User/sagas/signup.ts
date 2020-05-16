@@ -10,6 +10,7 @@ import { SagaIterator } from "redux-saga";
 import { NavigationService } from "../../../navigation/navigation.service";
 import { ErrorService } from "../../../Lib/ErrorService";
 import { updateUserActionCreator } from "../actions/update";
+import { createUser } from "../../../Lib/db";
 
 export function* signupSaga(
   action: ReturnType<typeof signUpActionCreator>,
@@ -23,6 +24,7 @@ export function* signupSaga(
       password,
     );
     yield put(updateUserActionCreator({ id: userData.user.uid }));
+    yield call(createUser, userData.user.uid, email, username);
     yield call([NavigationService, "navigate"], "AuthenticatedNavigator", {});
   } catch (error) {
     yield call([ErrorService, "showErrorModal"]);

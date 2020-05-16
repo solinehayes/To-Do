@@ -14,10 +14,10 @@ import { ErrorModal } from "./src/components/ErrorModal/ErrorModal.component";
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyAvHczJ7pVkKnG3UsuXix13YkNFPud60fY",
-  authDomain: "to-do-b2263.firebaseapp.com",
-  databaseURL: "https://to-do-b2263.firebaseio.com/",
-  storageBucket: "gs://to-do-b2263.appspot.com",
+  apiKey: "AIzaSyAnLhNOxXMnCWnXsWkv7EuVK3TTiTloL9o",
+  authDomain: "todo-30ff7.firebaseapp.com",
+  databaseURL: "https://todo-30ff7.firebaseio.com/",
+  storageBucket: "gs://todo-30ff7.appspot.com",
 };
 export const store = createStore(
   rootReducer,

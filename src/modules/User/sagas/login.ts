@@ -26,6 +26,7 @@ export function* loginSaga(
     yield put(updateUserActionCreator({ id: userData.user.uid }));
     yield call([NavigationService, "navigate"], "AuthenticatedNavigator", {});
   } catch (error) {
+    console.log(error);
     yield call([ErrorService, "showErrorModal"]);
   } finally {
     yield put(finishLoading(LoadingStatusKey.LOGIN));

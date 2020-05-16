@@ -124,7 +124,9 @@ export const Login: FunctionComponent = () => {
           </View>
           <BottomFullWidthButton
             text="Sign up"
-            onPress={() => signup(email, password, username)}
+            onPress={() => {
+              signup(email, password, username);
+            }}
             isLoading={isSignUpLoading}
             isDisabled={!password || !email || !username}
           />
