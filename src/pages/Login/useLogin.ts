@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginActionCreator } from "../../modules/User/actions/login";
 import { signUpActionCreator } from "../../modules/User/actions/signup";
 import { isLoadingSelector } from "../../modules/LoadingStatus/selector";
-import { createUser } from "../../Lib/db";
 
 export enum LoginState {
   LOGIN = "LOGIN",
@@ -25,7 +24,6 @@ export const useLogin = () => {
   };
 
   const signup = async (email: string, password: string, username: string) => {
-    createUser("testID", email, username);
     dispatch(signUpActionCreator({ email, password, username }));
   };
   return {
