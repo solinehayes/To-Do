@@ -7,12 +7,12 @@ export const useLists =() =>{
     const dbh = firebase.firestore();
 
     const createList = async (name:string,color: ListColors, userId: string) => {
-        console.log("Lauching function")
         
         //Créer laliste et l'ajuter à la collection liste
         var newListData = {
             name,
             color,
+            tasks: [],
         };
         let newListId = dbh.collection("lists").doc();
         newListId.set(newListData)
